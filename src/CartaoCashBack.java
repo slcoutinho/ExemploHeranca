@@ -2,7 +2,12 @@
 public class CartaoCashBack extends CartaoPrePago {
 
 	protected int tipoCartao;
-
+	
+	//Declarando CONSTANTES
+	public static final int BRONZE = 1;
+	public static final int SILVER = 2;
+	public static final int GOLD = 3;
+	
 	public CartaoCashBack(String numCartao, String titular, int anoValidade, int mesValidade, double saldo, int tipo) {
 		super(numCartao, titular, anoValidade, mesValidade, saldo);
 		this.tipoCartao = tipo;
@@ -21,11 +26,11 @@ public class CartaoCashBack extends CartaoPrePago {
 	public boolean comprar(double valor) {
 		if (valor <= super.saldo) {
 			super.saldo = super.saldo - valor;
-			if (tipoCartao == 1) {
+			if (tipoCartao == BRONZE) {
 				super.saldo = super.saldo + valor * 0.02;
-			} else if (tipoCartao == 2) {
+			} else if (tipoCartao == SILVER) {
 				super.saldo = super.saldo + valor * 0.05;
-			} else if (tipoCartao == 3) {
+			} else if (tipoCartao == GOLD) {
 				super.saldo = super.saldo + valor * 0.08;
 			}
 			return true;
